@@ -11,6 +11,8 @@ public interface OrdersBusinessServiceInterface {
 	
 	public List<OrderModel> getOrders(); // Mimic a database
 
+	public List<OrderModel> findAll();
+	
 	void init();
 
 	void destroy();

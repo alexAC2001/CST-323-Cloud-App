@@ -5,13 +5,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.gcu.data.DataAccessInterface;
 import com.gcu.model.OrderModel;
 
 public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 	
 	// Class member variable
 	@Autowired
-	private OrdersBusinessServiceInterface service;
+	private DataAccessInterface<OrderModel> service;
 	
 	@Override
 	public void init()
@@ -29,6 +30,11 @@ public class OrdersBusinessService implements OrdersBusinessServiceInterface{
 	public void test()
 	{
 		System.out.println("Hello from the OrderBusinssService");
+	}
+	
+	public List<OrderModel> findAll() 
+	{
+		return service.findAll();
 	}
 	
 	@Override

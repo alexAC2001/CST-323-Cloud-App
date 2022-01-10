@@ -37,4 +37,10 @@ public class AnotherOrdersBusinessService implements OrdersBusinessServiceInterf
 	{
 		System.out.println("In the AnotherOrdersBusinessService.destroy()");
 	}
+
+	@Override
+	public List<OrderModel> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

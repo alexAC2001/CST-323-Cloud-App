@@ -48,7 +48,7 @@ public class LoginController
 		System.out.println(String.format("Form with Username of %s and Password of %s", loginModel.getUsername(), loginModel.getPassword()) );
 		
 		// Get some Orders from the business class
-		List<OrderModel> orders = service.getOrders();
+		List<OrderModel> orders = service.findAll();
 		
 		model.addAttribute("title", "Order Form");
 		model.addAttribute("orders", orders);

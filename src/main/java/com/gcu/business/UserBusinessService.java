@@ -144,10 +144,10 @@ public class UserBusinessService implements UserServiceInterface
 		return ConvertEntity(userEntity);
 	}
 		
-	/* Delete an Album
-	 * Call on the DeleteAlbum Method from the DataService to delete the properties.
+	/* Delete a User
+	 * Call on the DeleteUser Method from the DataService to delete the properties.
 	 * @Param. String ID
-	 * @Return A deleted album
+	 * @Return A deleted user
 	 */
 	@Override
 	public void Delete(Long id) 

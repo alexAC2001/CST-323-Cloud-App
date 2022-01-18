@@ -1,6 +1,5 @@
 package com.gcu.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -13,10 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.gcu.business.OrdersBusinessServiceInterface;
 import com.gcu.business.UserServiceInterface;
-import com.gcu.model.LoginModel;
-import com.gcu.model.OrderModel;
 import com.gcu.model.UserModel;
 
 @Controller

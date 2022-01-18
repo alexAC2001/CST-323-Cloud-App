@@ -2,7 +2,6 @@ package com.gcu.data;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,25 +20,9 @@ import com.gcu.repository.UsersRepository;
 public class UserDataService implements UserDataAccessInterface<UserEntity> 
 {
 	
-	/*
-	 * 
-	 * @Autowire reigsterRepository
-	 */
-	/*@Autowired
-	private RegisterRepository registerRepository;*/
-	
 	@Autowired
 	private UsersRepository usersRepository;
 
-	/*  Non-default constructor for constructor injection
-	 * @Param - registerRepository
-	 * @Return - registerRepsoitory
-	 * 
-	 */
-	/*public UserDataService(RegisterRepository registerRepository)
-	{
-		this.registerRepository = registerRepository;
-	}*/
 
 	public UserDataService(UsersRepository usersRepository)
 	{
@@ -74,7 +57,7 @@ public class UserDataService implements UserDataAccessInterface<UserEntity>
 	/*
 	 * 
 	 * This method finds the album ID 
-	 * @Param - String ID of the album entity
+	 * @Param - String ID of the user entity
 	 * @Return Id from the album.
 	 */
 	public UserEntity findById(String id)
@@ -165,21 +148,22 @@ public class UserDataService implements UserDataAccessInterface<UserEntity>
 		return usersRepository.findByUsername(username);
 	}
 	
+	// Update an existing user
 	@Override
 	public UserEntity update(UserModel user) 
 	{		
 		// Make a new album entity
 		UserEntity userEntity = new UserEntity(user.getId(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getPassword());
-		// Making a new album entity, saving the album entity, then return it at the end of the method.
 		userEntity = this.usersRepository.save(userEntity);
 
 		return userEntity;
 	}	
+	
+	
+	// Delete an existing user
 	public void DeleteUser(Long id) 
 	{	
-		usersRepository.deleteById(id);
-		Optional<UserEntity> user;
-		user = usersRepository.findById(id);				
+		usersRepository.deleteById(id);		
 	}
 
 }

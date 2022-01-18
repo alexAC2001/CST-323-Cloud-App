@@ -2,7 +2,6 @@ package com.gcu.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,21 +37,13 @@ public class UserController
 	 * @Autowire albumService, inject AlbumServiceInterface
 	 */
 	@Autowired
-	public UserServiceInterface userService;
+	public UserServiceInterface userService;	
 	
-	/*
-	 * @Autowire albumDataService, inject AlbumDataAccessInterface
-	 */
-	//@Autowired 
-	//public AlbumDataAccessInterface<?> albumDataService;
-	
-	
-	/* Set the title attribute (from common.html) to Albums4You
-	 * Return the viewAlbums page
-	 * Get Albums from the database
+	/* Return the viewUsers page
+	 * Get Users from the database
 	 * @GetMapping - HTTP get Request (allAlbums)
 	 * @Param - Model model
-	 * @Return viewAlbums with all the albums in the list 
+	 * @Return viewUsers with all the albums in the list 
 	 */
 	@GetMapping("/allUsers")
 	public String displayUsers(Model model)
@@ -70,12 +61,12 @@ public class UserController
 		return "viewUsers";
 	}
 	
-	/* This method simply displays the form to create a new Album.
+	/* This method simply displays the form to create a new User.
 	 * This is inserting some values into our text boxes
-	 * Return the albumCreateForm view
+	 * Return the userCreateForm view
 	 * @GetMapping - HTTP get Request (Form)
 	 * @Param Model model
-	 * @Return albumCreateForm with the albummodel 
+	 * @Return userCreateForm with the userModel 
 	 */
 	@GetMapping("/form")
 	public String displayUserForm(Model model)
@@ -92,26 +83,13 @@ public class UserController
 		return "albumCreateForm";
 	}
 	
-	/* This method will display an album the user clicks on from the list of albums
-	 * Make a list that will contain the Tracks of the desired album
-	 * Set the title attribute (from common.html) to Albums4You
-	 *  Set the attribute to tracks, which is the list of tracks from the album
-	 *  Return the albumUpdateAlbum page with the Album's data
-	 *  @GetMapping - HTTP get Request display
-	 *  @RequestParam - Request the ID 
-	 *  @Param String Id of album, and model
-	 *  @Return albumDisplayForm witha list 
-	 */
-
+	// This method will display an user the user clicks on from the list of users
 	@GetMapping("/display")
 	public String displayOneUserForm(@RequestParam("id") String id, Model model)
 	{
 		try
 		{
 			UserModel foundUser = userService.getUserById(id);
-			//System.out.println("Album info: " + foundAlbum.getTitle());
-			//System.out.println("Album info: " + foundAlbum.getArtist());
- 
 			model.addAttribute("title", "User");	
 			model.addAttribute("user", foundUser);		
 		}
@@ -122,16 +100,7 @@ public class UserController
 		return "userDisplayForm";
 	}
 	
-	/* This method will compute the edit display form and find it by the ID
-	 * Set the title attribute (from common.html) to Albums4You
-	 * Add an albums attribute, which is the found album
-	 * Return the albumUpdateAlbum page with the Album's data
-	 * @GetMapping HTTP request Edit Form
-	 * @RequestParam - Grab the ID of the album
-	 * @Param - String id and model of the album 
-	 * @Return albumUpdateForm with a found album
-	 * 
-	 */
+	// This method will compute the edit display form and find it by the ID
 	@GetMapping("/editForm")
 	public String displayEditForm(@RequestParam("id") String id, Model model)
 	{
@@ -150,15 +119,7 @@ public class UserController
 	}
 	
 	
-	/* This method will process the edit process of the album.
-	 * If there were errors in the fields, keep the user at the albumCreateForm
-	 * Create a AlbumModel object and set it equal the albumservice.edit album and edit the albu model passed.
-	 * pass in the model attribute of the updated album.
-	 * @Postmapping - maps HTTP POST requests onto specific handler methods. (/edit)
-	 * @Param - Albummodel, Binding result, and Model
-	 * @Return an updated album, and the view albums page 
-	 * 
-	 */
+	// This method will process the edit process of the user
 	@PostMapping("/edit")
 	public String edit(UserModel userModel, BindingResult bindingResult, Model model)
 	{
@@ -184,13 +145,6 @@ public class UserController
 	
 	/* This album returns the displayDeleteForm
 	 *  Call the data service delete method
-	 * Add title attribute to the returned index page
-	 * @GetMapping HTTP request (/delete) 
-	 * @RequestParam request the ID of the ID
-	 * @Param - String ID and pass the Model for the album
-	 * @Return the desired album and the delete confirmation page 
-	 * 
-	 * 
 	 */
 	@GetMapping("/delete")
 	public String displayDeleteForm(@RequestParam("id") String id, Model model) 
@@ -210,29 +164,20 @@ public class UserController
 	}
 	
 	
-	/* This method deletes an album from the database by calling the DeleteAlbum method from the data service with the selected Album's id  as the parameter
-	 * Call the data service delete method
-	 * Add title attribute to the returned index page
-	 * Pass the album model through the model attribute page
-	 * @Exceptions- UpdatedFailException , Null Pointer Exception
-	 * @PostMapping - maps HTTP POST requests onto specific handlers (processdelete)
-	 * @Param AlbumModel, Model and Model
-	 * @Return the index of the web page 
-	 * 
+	/* This method deletes an album from the database by calling the DeleteUser method from the data service with the selected User's id  as the parameter
+	 * Call the data service delete method 
 	 */
 	@PostMapping("/processDelete")
 	public String deleteUser(UserModel user, Model model)
 	{	
 		System.out.println("Index: " + user);
+	
+		userService.Delete(user.getId());			
+		System.out.println("Deleted User is " + user);
 		
-		
-			userService.Delete(user.getId());			
-			System.out.println("Deleted User is " + user);
-			
-			model.addAttribute("title", "User");
-			model.addAttribute("user", user);
-		
-		
+		model.addAttribute("title", "User");
+		model.addAttribute("user", user);
+	
 		return "viewUsers";
 	}
 	

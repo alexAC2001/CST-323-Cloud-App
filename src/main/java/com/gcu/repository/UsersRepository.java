@@ -7,7 +7,7 @@ import com.gcu.entity.UserEntity;
 
 /* // This interface extends from CrudRepository, which is taken from Spring.
  * It provides CRUD methods which will save development time for this milestone.
- * @Param - Extends MongoRepository AlbumEntity, String
+ * @Param - Extends CrudRepository UserEntity, String
  * 
  */
 public interface UsersRepository extends CrudRepository<UserEntity, Long>

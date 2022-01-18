@@ -4,11 +4,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
-/*
- *  This class is used to have an entity that corresponds to the database in Mongo.
- *  @Params - String firstname, String lastname, String username, String password, String email, String phone
- *  @Document collections - 'users'
- */
 @Table("users")
 public class UserEntity {
 

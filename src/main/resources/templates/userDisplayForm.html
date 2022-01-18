@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">
+
+<head>
+<meta charset="UTF-8">
+
+<!-- The following code to set up a card container was found from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_cards -->
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+</style>
+
+</head>
+	<body>
+	<title> Update User Form</title>
+	<div layout:fragment="content">
+		<div class = "card">
+			<form action ="#" th:action="@{/users/allUsers}" th:object="${user}" method="get">
+			<table>
+				<tr>
+			 <td> First Name  </td> <td><input type="text" name="txt" placeholder = ""  th:field="*{firstName}" ></td>
+				
+					<div class = "card-body">
+					
+					</tr>
+					
+					<tr>						
+					    <td colspan="2"><input type="hidden" th:field="*{id}" ></td>					
+					</tr>
+					
+					<tr>
+						
+					<td> Last Name </td> <td> <input type="text" name="txt" placeholder = "" th:field="*{lastName}" ></td>
+						</tr>
+				<td> Username </td> <td> <input type="text" name="txt" placeholder = "" th:field="*{username}" ></td>
+					
+					</tr>
+					<tr>
+						<td> Password  </td> <td> <input type="text" name="txt" placeholder = "" th:field="*{password}" ></td>
+					</tr>
+					
+						<tr>
+						
+						<td colspan="3"><input type="submit" value="Back"/></td>
+						</tr>
+			</table>
+					<div th:if="${#fields.hasErrors('*')}">List of Errors</div>
+					<div th:each="err : ${#fields.errors('*')}">
+						<span style="color:red" th:text="${err}" class="fieldError"></span>
+						
+						</div>
+						
+			</form>
+		</div>
+	</body>
+</html>
+<style>
+body{
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	font-family: 'Jost', sans-serif;
+	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+
+
+input{
+    width: 120%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: black;
+	background: #573b8a;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+button{
+	width: 20%;
+	height: 50px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+
+input{
+	padding: 15px;
+	}
+div.test{
+	width: 21%;
+	height: 40px;
+	margin: 10px auto;
+	justify-content: center;
+	display: block;
+	color: #fff;
+	background: #573b8a;
+	font-size: 1em;
+	font-weight: bold;
+	margin-top: 20px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: .2s ease-in;
+	cursor: pointer;
+}
+
+input#artist{
+	background: white;
+	width: 125px;
+}
+input#title{
+	background: white;
+		width: 125px;
+}
+input#year{
+	background: white;
+	width: 125px;
+}
+input#price{
+	background: white;
+	width: 125px;
+}
+input#email{
+	background: white;
+}
+input#phone{
+	background: white;
+}
+input#tracks0\.title{
+	background: white;
+	
+}
+input#tracks0\.length{
+	background: white;
+	
+}
+input#tracks1\.title{
+	background: white;
+	
+}
+input#tracks1\.length{
+	background: white;
+	
+}
+div#grad1{
+	width:2000px;
+	
+}
+tbody{
+	font-family: serif;
+	color: white;
+	font-size: 19px;
+	}
+div{
+	font-family: serif;
+	color: white;
+}

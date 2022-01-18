@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="layouts/defaultTemplate">>
+    <head>
+        <meta charset="UTF-8">
+        <title>All Users</title>
+    </head>
+
+    <body>
+        <div layout:fragment="content">
+                <table style="width:50%">
+                    <thead>
+                        <tr>
+                            <th style="color: black" >Username</th>
+                            <th style="color: black">Password</th>
+                        <th>
+                    </thead>
+                    <tbody>
+                        
+                        <tr th:each="user : ${users}">
+                            <th style="color: black"><h5 th:text="${user.username}">test</h5></td>
+                            <th style="color: black"><h5 th:text="${user.password}">123</h5></td>
+							<td>
+	                            
+	                            <td>
+	                            	<a th:href ="@{/users/display(id=${user.id})}">View Details</a>                     
+	                            </td>
+	                            <td>
+	                            	<a th:href ="@{/users/editForm(id=${user.id})}">Edit User</a>                     
+	                            </td>	                            	                    
+	                            <td>	                            	
+	                            	<a th:href ="@{/users/delete(id=${user.id})}">Delete User</a>                     
+	                            </td>
+							</td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+        </div>
+    </body>
+
+</html>
+<style>
+thead{
+	color: black;
+	box-shadow: 0 8px 16px black
+	
+}
+tr{
+	color: white;
+	font-family: serif;
+}
+h2{
+	color: white;
+	font-family: serif;
+}

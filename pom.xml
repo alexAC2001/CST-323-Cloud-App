@@ -13,8 +13,11 @@
 	<version>2.4.5</version>
 	<name>CST323App</name>
 	<description>CST-323 Activity 1</description>
+	
+	<packaging>jar</packaging>
+	
 	<properties>
-		<java.version>11</java.version>
+		<java.version>15</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

@@ -50,7 +50,6 @@
 			<groupId>nz.net.ultraq.thymeleaf</groupId>
 			<artifactId>thymeleaf-layout-dialect</artifactId>
 		</dependency>
-		
 		<!-- For XML Binding support -->
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
@@ -62,7 +61,6 @@
 			<version>2.3.3</version>
 			<scope>runtime</scope>
 		</dependency>
-		
 		<!-- For Spring JDBC and the MySQL Database -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -73,6 +71,7 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.23</version>
 		</dependency>
+<<<<<<< HEAD
 		
 		<!-- For Google App Engine -->
 		<dependency>
@@ -99,6 +98,8 @@
 			<scope>provided</scope>
 		</dependency>-->
 		
+=======
+>>>>>>> parent of 8ccbeb9 (Added Dependencies for Google Cloud)
 	</dependencies>
 
 	<build>
@@ -106,15 +107,6 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>com.google.cloud.tools</groupId>
-				<artifactId>appengine-maven-plugin</artifactId>
-				<version>2.2.0</version>
-				<configuration>
-					<version>1</version>
-					<projectId>GCLOUD_CONFIG</projectId>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

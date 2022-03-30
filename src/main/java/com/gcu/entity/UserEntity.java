@@ -4,28 +4,24 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
+//@Getter @Setter @NoArgsConstructor // This provides a no argument constructor
 @Table("users")
 public class UserEntity {
 
 	@Id
-	Long id;
+	private Long id;
 	
 	@Column("FIRST_NAME")
-	String firstName;
+	private String firstName;
 	
 	@Column("LAST_NAME")
-	String lastName;
+	private String lastName;
 	
 	@Column("USERNAME")
-	String username;
+	private String username;
 	
 	@Column("PASSWORD")
-	String password;
-
-	//
-	public UserEntity() {
-		
-	}
+	private String password;
 
 	public UserEntity(Long id, String firstName, String lastName, String username, String password) {
 		super();
@@ -34,6 +30,11 @@ public class UserEntity {
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
+	}
+	
+	public UserEntity()
+	{
+		
 	}
 
 	public Long getId() {
